@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微處理機學習導航圖｜技術型高中</title>
+<style>
+:root{
+  --bg:#f5f7fb; --card:#ffffff; --text:#1f2937; --muted:#64748b;
+  --primary:#2563eb; --primary2:#0ea5e9; --accent:#f59e0b;
+  --green:#16a34a; --purple:#7c3aed; --border:#dbe3ef;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{background:linear-gradient(135deg,#1e3a8a,#2563eb 55%,#0ea5e9);color:#fff;padding:42px 20px}
+.wrap{max-width:1180px;margin:auto}
+h1{margin:0 0 8px;font-size:clamp(30px,5vw,48px)}
+.subtitle{font-size:18px;opacity:.92}
+.badge{display:inline-block;margin-top:18px;padding:7px 14px;border:1px solid rgba(255,255,255,.4);border-radius:999px;font-size:14px}
+main{padding:28px 20px 50px}
+.hero{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:24px;box-shadow:0 8px 30px rgba(30,58,138,.07);margin-bottom:24px}
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;margin:18px 0}
+.flow .node{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:14px;padding:12px 18px;font-weight:700}
+.arrow{color:#94a3b8;font-size:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 5px 18px rgba(15,23,42,.05)}
+.card h3{margin:0 0 10px;font-size:21px}
+.num{display:inline-flex;width:34px;height:34px;border-radius:10px;align-items:center;justify-content:center;background:#dbeafe;color:#1d4ed8;font-weight:800;margin-right:8px}
+ul{padding-left:22px;margin:10px 0}
+li{margin:5px 0}
+.tip{border-left:5px solid var(--accent);background:#fffbeb;padding:13px 16px;border-radius:10px;margin-top:14px}
+.key{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.key span{background:#f1f5f9;border-radius:999px;padding:5px 10px;font-size:13px}
+details{margin-top:12px;border:1px solid var(--border);border-radius:12px;padding:10px 14px;background:#fafcff}
+summary{cursor:pointer;font-weight:700}
+.exam{background:linear-gradient(135deg,#f8fafc,#eef2ff)}
+footer{max-width:1180px;margin:auto;padding:0 20px 35px;color:var(--muted);font-size:13px}
+.progress{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:16px}
+.progress div{height:10px;border-radius:999px;background:#dbeafe}
+.progress div:nth-child(1){background:#2563eb}.progress div:nth-child(2){background:#0ea5e9}.progress div:nth-child(3){background:#16a34a}.progress div:nth-child(4){background:#7c3aed}.progress div:nth-child(5){background:#f59e0b}
+@media(max-width:700px){.progress{grid-template-columns:1fr 1fr}.flow .arrow{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="badge">技術型高中｜升學導向｜第1、2章題目整理</div>
+    <h1>微處理機學習導航圖</h1>
+    <div class="subtitle">把「零散的名詞與選擇題」串成一條學生看得懂的學習路徑：CPU → 指令 → 匯流排 → 記憶體 → I/O → 解題。</div>
+  </div>
+</header>
+
+<main class="wrap">
+<section class="hero">
+  <h2>先讓學生記住一條主線</h2>
+  <div class="flow">
+    <div class="node">電腦系統</div><div class="arrow">→</div>
+    <div class="node">CPU</div><div class="arrow">→</div>
+    <div class="node">提取</div><div class="arrow">→</div>
+    <div class="node">解碼</div><div class="arrow">→</div>
+    <div class="node">執行</div><div class="arrow">→</div>
+    <div class="node">記憶體 / I/O</div>
+  </div>
+  <p><b>核心觀念：</b>CPU 是「做事的人」、暫存器是「手邊的小空間」、記憶體是「工作資料區」、匯流排是「道路」、控制訊號是「交通指揮」。學生先建立這張圖，再放入名詞與計算題。</p>
+  <div class="progress"><div></div><div></div><div></div><div></div><div></div></div>
+</section>
+
+<section class="grid">
+  <article class="card">
+    <h3><span class="num">1</span>微處理機基本概念</h3>
+    <ul>
+      <li>CPU 的基本結構：ALU、控制電路、暫存器</li>
+      <li>CPU 位元數與架構概念</li>
+      <li>時脈、時脈週期與執行速度</li>
+      <li>Pipeline、超管線、超純量等速度提升概念</li>
+      <li>L1 Cache：降低 CPU 對外部記憶體存取時間</li>
+    </ul>
+    <div class="key"><span>CPU</span><span>Clock</span><span>Pipeline</span><span>Cache</span></div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">2</span>CPU 裡面到底在做什麼？</h3>
+    <ul>
+      <li>PC：指向下一道指令所在位址</li>
+      <li>IR：暫存剛由記憶體讀入的指令</li>
+      <li>ACC：常用於 ALU 運算結果的暫存</li>
+      <li>Stack：副程式呼叫時可保存返回位址</li>
+      <li>Opcode：定義指令要做的動作</li>
+    </ul>
+    <div class="tip"><b>學生口訣：</b>PC 找下一題 → IR 看題目 → 控制單元解讀 → ALU 做運算 → 暫存器放結果。</div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">3</span>指令執行流程</h3>
+    <div class="flow">
+      <div class="node">Fetch<br>提取</div><div class="arrow">→</div>
+      <div class="node">Decode<br>解碼</div><div class="arrow">→</div>
+      <div class="node">Execute<br>執行</div>
+    </div>
+    <p>題目常把三個階段打亂，要求學生判斷正確順序。這是整章最值得先建立的「骨架」。</p>
+    <details><summary>搭配 MOV 指令理解</summary>
+      <p>MOV Acc, Data：可理解成把 Data 的資料轉移到 Acc。<br>
+      MOV [OPR], AX：把 AX 內容寫入 OPR 所指定位址。</p>
+    </details>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">4</span>三大匯流排：CPU 的道路</h3>
+    <ul>
+      <li><b>位址匯流排：</b>決定 CPU 能選到哪個位址；線數越多，可定址範圍越大。</li>
+      <li><b>資料匯流排：</b>負責資料傳送；寬度與一次可傳送的資料量有關。</li>
+      <li><b>控制匯流排：</b>傳送讀、寫、時脈等控制訊號。</li>
+    </ul>
+    <div class="tip"><b>解題重點：</b>16 條位址線 → 2¹⁶ 個位址；24 條位址線 → 2²⁴ 個位址。</div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">5</span>記憶體：速度與角色</h3>
+    <ul>
+      <li>Register → Cache → RAM → ROM：題目中的速度比較</li>
+      <li>程式執行前通常要先載入 RAM</li>
+      <li>RAM：可讀寫、揮發性</li>
+      <li>ROM：非揮發性，題目以保留資料的特性辨識</li>
+      <li>輔助記憶體：容量大、價格低、可攜性佳，但速度通常較慢</li>
+    </ul>
+    <div class="key"><span>Register</span><span>Cache</span><span>RAM</span><span>ROM</span></div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">6</span>記憶體容量與位址</h3>
+    <ul>
+      <li>1K × 8：1024 個位址，每個位址 8 bits</li>
+      <li>「容量」要拆成：位址數 × 每位址資料寬度</li>
+      <li>由位址線數量推定可定址空間</li>
+      <li>利用解碼器做記憶體擴充與選擇</li>
+    </ul>
+    <div class="tip"><b>解題三步驟：</b>先看位址數 → 再看資料寬度 → 最後算總容量。</div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">7</span>I/O：CPU 如何與外界溝通？</h3>
+    <ul>
+      <li>Memory Mapped I/O：I/O 佔用記憶體位址空間</li>
+      <li>CPU 可用記憶體指令存取 I/O</li>
+      <li>題目會用 I/O/M、RD、WR 判斷目前動作</li>
+      <li>讀取：資料往 CPU；寫入：資料由 CPU 往外</li>
+    </ul>
+    <div class="tip"><b>判斷順序：</b>先看 I/O 還是 Memory → 再看 RD / WR → 最後判斷資料方向。</div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">8</span>解碼器與位址解碼</h3>
+    <ul>
+      <li>利用解碼器選擇特定記憶體或介面裝置</li>
+      <li>固定地址解碼題：注意哪些位址線直接進入邏輯閘、哪些經過反相</li>
+      <li>記憶體擴充題：同時考「容量」與「資料寬度」</li>
+    </ul>
+    <details><summary>第2回題型提醒</summary>
+      <p>第19題以多顆 6264（8K×8）搭配 2 對 4 解碼器判斷無法擴充的容量；第20題則是固定地址解碼。這兩題適合放在「進階應用」區。</p>
+    </details>
+  </article>
+</section>
+
+<section class="hero exam" style="margin-top:24px">
+  <h2>🎯 升學解題架構：看到題目先分類</h2>
+  <div class="grid">
+    <div class="card"><h3>看到「線數」</h3><p>先想到 <b>位址空間 / 資料寬度</b>。例如 16 條位址線 → 2¹⁶ 個位址。</p></div>
+    <div class="card"><h3>看到「PC / IR / ACC」</h3><p>先想到 <b>CPU 內部資料流</b>：PC 找指令、IR 放指令、ACC 常放運算結果。</p></div>
+    <div class="card"><h3>看到「Read / Write」</h3><p>先問 <b>資料往哪裡走？</b> CPU 讀入，或 CPU 寫出。</p></div>
+    <div class="card"><h3>看到「RAM / ROM / Cache」</h3><p>先比較 <b>速度、揮發性、用途</b>，不要只背名稱。</p></div>
+    <div class="card"><h3>看到「I/O/M、RD、WR」</h3><p>先判斷 <b>記憶體還是週邊</b>，再判斷讀或寫。</p></div>
+    <div class="card"><h3>看到「解碼器」</h3><p>先想 <b>選擇哪一顆晶片 / 哪個位址</b>，再進一步做邏輯判斷。</p></div>
+  </div>
+</section>
+
+<section class="hero">
+  <h2>👨‍🏫 建議的教學順序</h2>
+  <ol>
+    <li><b>先建立全貌：</b>CPU、記憶體、I/O、匯流排。</li>
+    <li><b>再認識 CPU：</b>PC、IR、ACC、控制單元、ALU。</li>
+    <li><b>再學指令：</b>Fetch → Decode → Execute，搭配 MOV、ADD 等例子。</li>
+    <li><b>再學匯流排：</b>位址、資料、控制三者分工。</li>
+    <li><b>再學記憶體：</b>Register、Cache、RAM、ROM、容量計算。</li>
+    <li><b>最後進 I/O 與解碼：</b>Memory Mapped I/O、RD/WR、位址解碼與記憶體擴充。</li>
+  </ol>
+  <div class="tip"><b>教學策略：</b>不要一開始就讓學生背大量名詞。先用「CPU 做事 → 資料怎麼走 → 指令怎麼執行 → 怎麼找到資料」的故事線，再把考題放進去。</div>
+</section>
+
+<section class="hero">
+  <h2>📌 本版內容來源</h2>
+  <p>本學習導航依使用者提供的《微處理機（全）》第1回「第1章 微處理機基本概念」與第2回「第2章 微處理機硬體架構」測驗題整理，保留原題所涵蓋的概念與題型；未提供的後續章節不在本版中自行延伸。</p>
+</section>
+</main>
+
+<footer>
+  微處理機學習導航圖｜適合技術型高中資訊／電子相關科別課堂使用｜可作為投影、複習或升學解題前導頁。
+</footer>
+</body>
+</html>
